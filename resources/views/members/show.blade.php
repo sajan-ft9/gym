@@ -24,6 +24,7 @@
                                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                                 <img src="{{ asset($member->image_path ?? 'defaults/default_man.png') }}" alt="Avatar"
                                     class="img-fluid my-5" style="width: 200px;" />
+                                    <p>ID: {{ $member->id }}</p>
                                 <h5>{{ $member->name }}</h5>
                                 <h5>Expiring on: 26 days</h5>
 

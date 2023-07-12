@@ -14,7 +14,11 @@
     <link rel="stylesheet" href="{{ asset('/admin/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('/admin/dist/css/adminlte.min.css') }}">
+    <link href="{{ asset('nepali_date/css/nepali.datepicker.v4.0.1.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('select2/dist/css/select2.min.css') }}" rel="stylesheet" />
+
     @vite('resources/js/app.js')
+
 
     @yield('css')
 </head>
@@ -64,7 +68,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link">
+            <a href="{{ route('admin.home') }}" class="brand-link">
                 <img src="{{ asset('/admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Niramayee</span>
@@ -75,11 +79,11 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset((auth()->user()->image_path ?? 'defaults/default_man.png')) }}" class="img-circle elevation-2"
-                            alt="User Image">
+                        <img src="{{ asset(auth()->user()->image_path ?? 'defaults/default_man.png') }}"
+                            class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+                        <a href="{{ route('admin.home') }}" class="d-block">{{ auth()->user()->name }}</a>
                     </div>
                 </div>
 
@@ -99,6 +103,22 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('member.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Members
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('category.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-bars"></i>
+                                <p>
+                                    Categories
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -108,7 +128,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <div class="col-8" style="position:fixed;bottom:10px; right:20px; z-index:999">
+            <div class="col-sm-8 col-lg-6 col-md-6" style="position:fixed;bottom:10px; right:20px; z-index:999">
                 <x-alert />
             </div>
             @yield('content')
@@ -124,6 +144,8 @@
 
     <script src="{{ asset('/admin/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
+    <script src="{{ asset('select2/dist/js/select2.js') }}"></script>
+
     <script src="{{ asset('/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('/admin/dist/js/adminlte.min.js') }}"></script>
@@ -131,6 +153,7 @@
     <script src="{{ asset('/admin/dist/js/demo.js') }}"></script>
     {{-- CKNeditor --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <script src="{{ asset('nepali_date/js/nepali.datepicker.v4.0.1.min.js') }}" type="text/javascript"></script>
     @yield('scripts')
     @yield('js')
 </body>

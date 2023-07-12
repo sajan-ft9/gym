@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('address');
             $table->string('join_date');
             $table->string('image_path')->nullable();
-            $table->integer('membership_type');
             $table->timestamps();
         });
     }

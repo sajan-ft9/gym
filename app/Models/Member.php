@@ -19,13 +19,18 @@ class Member extends Model
         'image_path',
     ];
 
-    // public function categories(){
-    //     return $this->hasManyThrough(Category::class, MemberCategory::class,'member_id','id', 'id', 'category_id');
-    // }
 
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'member_categories');
+    }
+
+    public function payments(){
+        return $this->hasMany(Payment::class);
+    }
+
+    public function subscription(){
+        return $this->hasOne(Subscription::class);
     }
 
 }

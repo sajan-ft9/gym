@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Models\Member;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\MemberCategory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -70,6 +70,7 @@ class MemberController extends Controller
     }
 
     public function show(Member $member){
+        
         return view('members.show',compact('member'));
     }
 

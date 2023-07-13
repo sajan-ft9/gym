@@ -28,7 +28,6 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>USER ID</th>
-                            <th>Email</th>
                             <th>Membership Category</th>
                             <th>Action</th>
                         </tr>
@@ -39,7 +38,6 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->email }}</td>
                                 <td>
                                     @foreach ($item->categories as $cat)
                                         {{ $cat->name }}

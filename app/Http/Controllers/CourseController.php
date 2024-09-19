@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -26,7 +27,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $categories = Category::whereNull('parent_id')->get();
+        $categories = Category::whereNotNull('parent_id')->get();
         return view('courses.create', compact('categories'));
     }
 
@@ -60,7 +61,8 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return view('courses.show', compact('course'));
+        $lessons = Lesson::orderBy('order', 'ASC')->where('course_id', $course->id)->get();
+        return view('courses.show', compact('course', 'lessons'));
     }
 
     /**
@@ -71,7 +73,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        $categories = Category::whereNull('parent_id')->get();
+        $categories = Category::whereNotNull('parent_id')->get();
         return view('courses.edit', compact('categories', 'course'));
     }
 

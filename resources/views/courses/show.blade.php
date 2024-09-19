@@ -9,7 +9,7 @@
                         <h1>Course Details</h1>
                     </div>
                     <div class="col-sm-6">
-                        <a class="btn btn-info float-sm-right" href="{{ route('courses.index') }}">Back to List</a>
+                        <a class="btn btn-info float-sm-right" href="{{ route('lessons.index') }}">Back to List</a>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -18,13 +18,7 @@
             <div class="card-header">
                 <h3 class="card-title">{{ $course->title }}</h3>
                 <div class="card-tools">
-                    <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                    <form action="{{ route('courses.destroy', $course->id) }}" method="POST" class="d-inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm"
-                                onclick="return confirm('Are you sure you want to delete this course?')">Delete</button>
-                    </form>
+                    <a href="{{ route('lessons.create', $course->id) }}" class="btn btn-info btn-sm">Add Lesson</a>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
                     </button>
@@ -52,6 +46,43 @@
                         <p><strong>Description:</strong></p>
                         <div>{!! $course->description !!}</div>
                     </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <h5>Lessons</h5>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($lessons as $key => $item)
+                                <tr>
+                                    <td>{{ ++$key }}</td>
+                                    <td>{{ $item->title }}</td>
+                                    <td class="py-0 align-middle">
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="{{ route('lessons.show', $item->id) }}" class="btn btn-info mx-1"><i
+                                                    class="fas fa-eye"></i></a>
+                                            <a href="{{ route('lessons.edit', $item->id) }}"
+                                                class="btn btn-warning mx-1"><i class="fas fa-edit"></i></a>
+                                            <form action="{{ route('lessons.destroy', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit"
+                                                    onclick="return confirm('Are you sure you want to delete?')"
+                                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

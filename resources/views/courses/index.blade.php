@@ -6,17 +6,16 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Category</h1>
+                        <h1>Courses</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
         <div class="card card-dark">
             <div class="card-header">
-                <h3 class="card-title">Category</h3>
+                <h3 class="card-title">Courses</h3>
                 <div class="card-tools">
-                    <a class="btn-info btn-sm mx-2" href="{{ route('category.create') }}"><i
-                            class="fas fa-plus mr-1"></i>Create</a>
+                    <a class="btn-info btn-sm mx-2" href="{{ route('courses.create') }}"><i class="fas fa-plus"></i> Create</a>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
                     </button>
@@ -27,22 +26,26 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Parent Category</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $key => $item)
+                        @foreach ($courses as $key => $item)
                             <tr>
                                 <td>{{ ++$key }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->parent->name ?? '-' }}</td>
+                                <td>{{ $item->title }}</td>
+                                <td>{{ $item->category->name ?? '-' }}</td>
+                                <td>{{ $item->price }}</td>
                                 <td class="py-0 align-middle">
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('category.edit', $item->id) }}" class="btn btn-warning mx-1"><i
+                                        <a href="{{ route('courses.show', $item->id) }}" class="btn btn-info mx-1"><i
+                                                class="fas fa-eye"></i></a>
+                                        <a href="{{ route('courses.edit', $item->id) }}" class="btn btn-warning mx-1"><i
                                                 class="fas fa-edit"></i></a>
-                                        <form action="{{ route('category.destroy', $item->id) }}" method="POST">
+                                        <form action="{{ route('courses.destroy', $item->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button type="submit"

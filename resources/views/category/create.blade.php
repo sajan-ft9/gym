@@ -35,6 +35,18 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
+                            <div class="form-group">
+                                <label>Parent Category</label>
+                                <select name="parent_id" class="form-control" id="">
+                                    <option value="">Select Parent Category</option>
+                                    @foreach ($categories as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('parent_id')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
                             <button type="submit" class="btn btn-info px-4">Save</button>
 
                         </div>

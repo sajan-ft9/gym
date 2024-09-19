@@ -27,7 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        $categories = Category::whereNull('parent_id')->get();
+        return view('category.create', compact('categories'));
     }
 
     /**
@@ -39,7 +40,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'name' => 'required|string|max:255'
+            'name' => 'required|string|max:255',
+            'parent_id' => 'nullable|exists:categories,id'
         ]);
 
         Category::create($formFields);
@@ -65,7 +67,8 @@ class CategoryController extends Controller
      */
     public function edit(Request $request, Category $category)
     {
-        return view('category.edit', compact('category'));
+        $categories = Category::whereNull('parent_id')->get();
+        return view('category.edit', compact('category', 'categories'));
     }
 
     /**
@@ -78,7 +81,8 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $formFields = $request->validate([
-            'name' => 'required|string|max:255'
+            'name' => 'required|string|max:255',
+            'parent_id' => 'nullable|exists:categories,id'
         ]);
         $category->update($formFields);
         return redirect(route('category.index'))->with('success', 'Category updated successfully');
@@ -92,12 +96,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        try{
+        try {
             $category->delete();
             return redirect()->back()->with('success', 'Category deleted successfully');
-        }
-        catch(Exception $e){
-            return redirect()->back()->with('danger', 'Category cannot be deleted as it is being used by members');
+        } catch (Exception $e) {
+            return redirect()->back()->with('danger', 'Category cannot be deleted as it is being used by child category');
         }
     }
 }

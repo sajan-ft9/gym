@@ -23,15 +23,29 @@
             </div>
 
             <div class="card-body">
-                <form action="{{ route('category.update',$category->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Name <span class="text-danger">*</span></label>
-                                <input type="text" name="name" class="form-control" value="{{ $category->name }}" required>
+                                <input type="text" name="name" class="form-control" value="{{ $category->name }}"
+                                    required>
                                 @error('name')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Parent Category</label>
+                                <select name="parent_id" class="form-control" id="">
+                                    <option value="">Select Parent Category</option>
+                                    @foreach ($categories as $item)
+                                        <option value="{{ $item->id }}"
+                                            {{ $item->id == $category->parent?->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('parent_id')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>

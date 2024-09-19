@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('members', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('dob');
-            $table->string('address');
-            $table->string('join_date');
-            $table->string('image_path')->nullable();
+            $table->longText('title');
+            $table->longText('description');
+            $table->decimal('price', 8, 2)->default(0);
+            $table->integer('duration')->comment('Duration in minutes');
+            $table->integer('level')->default(1);
+            $table->foreignId('category_id')->constrained('categories');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('members');
+        Schema::dropIfExists('courses');
     }
 };

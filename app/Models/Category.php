@@ -9,11 +9,10 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'parent_id'];
 
-    public function members()
+    public function parent()
     {
-        return $this->belongsToMany(Member::class, 'member_categories');
+        return $this->hasOne(Category::class, 'id', 'parent_id');
     }
-
 }

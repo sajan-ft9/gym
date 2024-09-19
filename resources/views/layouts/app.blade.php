@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Niramayee</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('/admin/dist/css/adminlte.min.css') }}">
     <link href="{{ asset('nepali_date/css/nepali.datepicker.v4.0.1.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('select2/dist/css/select2.min.css') }}" rel="stylesheet" />
-
+    <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.min.css') }}">
     @vite('resources/js/app.js')
 
 
@@ -68,10 +68,8 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="{{ route('admin.home') }}" class="brand-link">
-                <img src="{{ asset('/admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Niramayee</span>
+            <a href="{{ route('admin.home') }}" class="brand-link me-1">
+                <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
             </a>
 
             <!-- Sidebar -->
@@ -104,18 +102,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('member.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    Members
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{ route('category.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-bars"></i>
                                 <p>
                                     Categories
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('courses.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Courses
                                 </p>
                             </a>
                         </li>
@@ -152,7 +150,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('/admin/dist/js/demo.js') }}"></script>
     {{-- CKNeditor --}}
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <script src="{{ asset('admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('nepali_date/js/nepali.datepicker.v4.0.1.min.js') }}" type="text/javascript"></script>
     @yield('scripts')
     @yield('js')

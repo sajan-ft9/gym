@@ -33,3 +33,16 @@ Route::middleware('auth')->group(function () {
     Route::get('lessons/create/{course}', [LessonController::class, 'create'])->name('lessons.create');
     Route::resource('lessons', LessonController::class)->except(['create']);
 });
+
+Route::get('/', function () {
+    return view('website.home');
+});
+Route::get('/about', function () {
+    return view('website.about');
+})->name('about');
+Route::get('/contact', function () {
+    return view('website.contact');
+})->name('contact');
+Route::get('/courses', function () {
+    return view('website.courses');
+})->name('courses');

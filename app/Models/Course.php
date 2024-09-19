@@ -18,7 +18,15 @@ class Course extends Model
         'category_id',
     ];
 
-    public function category(){
+    public function category()
+    {
         return $this->hasOne(Category::class, 'id', 'category_id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'enrollments')
+            ->withPivot('enrollment_date')
+            ->withTimestamps();
     }
 }

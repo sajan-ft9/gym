@@ -4,7 +4,7 @@
     <section class="h-100 gradient-custom-2">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-lg-9 col-xl-7">
+                <div class="col col-lg-10">
                     <div class="card">
                         <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
                             <div class="mx-4 mt-5 d-flex flex-column" style="width: 150px;">
@@ -26,30 +26,106 @@
                                         enctype="multipart/form-data">
                                         @csrf
                                         @method('patch')
-                                        <div class="form-group">
-                                            <label for="">Name:</label>
-                                            <input type="text" class="form-control" name="name"
-                                                value="{{ $user->name }}" required>
-                                            @error('name')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Email:</label>
-                                            <input type="email" class="form-control" name="email"
-                                                value="{{ $user->email }}" required>
-                                            @error('email')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Photo:</label>
-                                            <input type="file" class="form-control" name="image_path"
-                                                onchange="loadFile(event)" accept="image/*">
-                                            @error('image_path')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                            <img class="mt-2" id="output" alt="">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">Name:</label>
+                                                    <input type="text" class="form-control" name="name"
+                                                        value="{{ $user->name }}" required>
+                                                    @error('name')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">Email:</label>
+                                                    <input type="email" class="form-control" name="email"
+                                                        value="{{ $user->email }}" required>
+                                                    @error('email')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Country<span class="text-danger">*</span></label>
+                                                    <select name="level" class="form-control" id="">
+                                                        <option value="">Select Country</option>
+                                                        @foreach (config('dropdown.country') as $key => $co)
+                                                            <option value="{{ $key }}"
+                                                                {{ old('country') == $key ? 'selected' : '' }}>
+                                                                {{ $co }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('country')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">Address:</label>
+                                                    <input type="text" class="form-control" name="address"
+                                                        value="{{ $user->address }}" required>
+                                                    @error('address')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Gender<span class="text-danger">*</span></label>
+                                                    <select name="level" class="form-control" id="">
+                                                        <option value="">Select Gender</option>
+                                                        @foreach (config('dropdown.gender') as $key => $ge)
+                                                            <option value="{{ $key }}"
+                                                                {{ old('gender') == $key ? 'selected' : '' }}>
+                                                                {{ $ge }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('gender')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Education<span class="text-danger">*</span></label>
+                                                    <select name="level" class="form-control" id="">
+                                                        <option value="">Select Education</option>
+                                                        @foreach (config('dropdown.education') as $key => $ed)
+                                                            <option value="{{ $key }}"
+                                                                {{ old('education') == $key ? 'selected' : '' }}>
+                                                                {{ $ed }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('education')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">Date of Birth:</label>
+                                                    <input type="date" class="form-control" name="dob"
+                                                        value="{{ $user->dob }}" required>
+                                                    @error('dob')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="">Photo:</label>
+                                                    <input type="file" class="form-control" name="image_path"
+                                                        onchange="loadFile(event)" accept="image/*">
+                                                    @error('image_path')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                    <img class="mt-2" id="output" alt="">
+                                                </div>
+                                            </div>
                                         </div>
                                         <button type="submit" class="btn btn-info px-4">Update</button>
                                     </form>

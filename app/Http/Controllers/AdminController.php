@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +20,11 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.home');
+        $categories = Category::count();
+        $courses = Course::count();
+        $lessons = Lesson::count();
+        $users = User::count();
+        return view('admin.home', compact('categories', 'courses', 'lessons', 'users'));
     }
 
     public function profile()

@@ -15,7 +15,7 @@
         <div class="card card-dark">
             <div class="card-header">
                 <h3 class="card-title">Edit Lesson</h3>
-                <a class="btn-info btn-sm mx-2" href="{{ route('lessons.index') }}">List</a>
+                <a class="btn-info btn-sm mx-2" href="{{ route('courses.show', $lesson->course_id) }}">List</a>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>

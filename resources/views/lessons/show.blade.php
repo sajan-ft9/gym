@@ -15,7 +15,7 @@
         <div class="card card-dark">
             <div class="card-header">
                 <h3 class="card-title">Lesson Details</h3>
-                <a class="btn-info btn-sm mx-2" href="{{ route('lessons.index') }}">Back to List</a>
+                <a class="btn-info btn-sm mx-2" href="{{ route('courses.show', $lesson->course_id) }}">Back to List</a>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -46,7 +46,7 @@
                     <!-- Lesson Video -->
                     <div class="col-12 mb-3">
                         <strong>Video:</strong>
-                        @if($lesson->video_url)
+                        @if ($lesson->video_url)
                             <video width="600" controls>
                                 <source src="{{ asset('storage/' . $lesson->video_url) }}" type="video/mp4">
                                 Your browser does not support the video tag.

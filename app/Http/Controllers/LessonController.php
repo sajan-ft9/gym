@@ -126,6 +126,12 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        //
+        $lesson->delete();
+
+        if ($lesson->video_url && Storage::exists('public/' . $lesson->video_url)) {
+            Storage::delete('public/' . $lesson->video_url);
+        }
+
+        return redirect()->route('courses.show', $lesson->course_id)->with('success', 'Lesson deleted successfully.');
     }
 }

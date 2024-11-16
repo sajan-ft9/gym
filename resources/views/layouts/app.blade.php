@@ -94,6 +94,14 @@
                          with font-awesome or any other icon font library -->
 
                         <li class="nav-item">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link">
+                                <i class="nav-icon fas fas fa-people-arrows"></i>
+                                <p>
+                                    Users
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('admin.home') }}" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
@@ -102,7 +110,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('category.index') }}" class="nav-link">
+                            <a href="{{ route('admin.category.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-bars"></i>
                                 <p>
                                     Categories
@@ -110,7 +118,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('courses.index') }}" class="nav-link">
+                            <a href="{{ route('admin.courses.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Courses

@@ -9,7 +9,7 @@
                         <h1>Course Details</h1>
                     </div>
                     <div class="col-sm-6">
-                        <a class="btn btn-info float-sm-right" href="{{ route('lessons.index') }}">Back to List</a>
+                        <a class="btn btn-info float-sm-right" href="{{ route('admin.lessons.index') }}">Back to List</a>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -18,7 +18,7 @@
             <div class="card-header">
                 <h3 class="card-title">{{ $course->title }}</h3>
                 <div class="card-tools">
-                    <a href="{{ route('lessons.create', $course->id) }}" class="btn btn-info btn-sm">Add Lesson</a>
+                    <a href="{{ route('admin.lessons.create', $course->id) }}" class="btn btn-info btn-sm">Add Lesson</a>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
                     </button>
@@ -66,11 +66,11 @@
                                     <td>{{ $item->title }}</td>
                                     <td class="py-0 align-middle">
                                         <div class="btn-group btn-group-sm">
-                                            <a href="{{ route('lessons.show', $item->id) }}" class="btn btn-info mx-1"><i
+                                            <a href="{{ route('admin.lessons.show', $item->id) }}" class="btn btn-info mx-1"><i
                                                     class="fas fa-eye"></i></a>
-                                            <a href="{{ route('lessons.edit', $item->id) }}"
+                                            <a href="{{ route('admin.lessons.edit', $item->id) }}"
                                                 class="btn btn-warning mx-1"><i class="fas fa-edit"></i></a>
-                                            <form action="{{ route('lessons.destroy', $item->id) }}" method="POST">
+                                            <form action="{{ route('admin.lessons.destroy', $item->id) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit"

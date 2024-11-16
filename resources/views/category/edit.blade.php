@@ -14,7 +14,7 @@
         <div class="card card-dark">
             <div class="card-header">
                 <h3 class="card-title">Edit Category</h3>
-                <a class="btn-info btn-sm mx-2" href="{{ route('category.index') }}">List</a>
+                <a class="btn-info btn-sm mx-2" href="{{ route('admin.category.index') }}">List</a>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -23,7 +23,7 @@
             </div>
 
             <div class="card-body">
-                <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">

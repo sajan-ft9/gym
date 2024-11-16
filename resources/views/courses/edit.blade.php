@@ -14,7 +14,7 @@
         <div class="card card-dark">
             <div class="card-header">
                 <h3 class="card-title">Edit Course</h3>
-                <a class="btn-info btn-sm mx-2" href="{{ route('courses.index') }}">List</a>
+                <a class="btn-info btn-sm mx-2" href="{{ route('admin.courses.index') }}">List</a>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -23,7 +23,7 @@
             </div>
 
             <div class="card-body">
-                <form action="{{ route('courses.update', $course->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.courses.update', $course->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT') <!-- Use PUT method for updating -->
                     <div class="row">

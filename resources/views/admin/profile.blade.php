@@ -47,22 +47,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Country<span class="text-danger">*</span></label>
-                                                    <select name="level" class="form-control" id="">
-                                                        <option value="">Select Country</option>
-                                                        @foreach (config('dropdown.country') as $key => $co)
-                                                            <option value="{{ $key }}"
-                                                                {{ old('country') == $key ? 'selected' : '' }}>
-                                                                {{ $co }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('country')
-                                                        <small class="text-danger">{{ $message }}</small>
-                                                    @enderror
-                                                </div>
-                                            </div>
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="">Address:</label>

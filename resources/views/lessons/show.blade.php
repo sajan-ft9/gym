@@ -15,7 +15,7 @@
         <div class="card card-dark">
             <div class="card-header">
                 <h3 class="card-title">Lesson Details</h3>
-                <a class="btn-info btn-sm mx-2" href="{{ route('courses.show', $lesson->course_id) }}">Back to List</a>
+                <a class="btn-info btn-sm mx-2" href="{{ route('admin.courses.show', $lesson->course_id) }}">Back to List</a>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -65,7 +65,7 @@
             </div>
 
             <div class="card-footer">
-                <a class="btn btn-info" href="{{ route('lessons.edit', $lesson->id) }}">Edit Lesson</a>
+                <a class="btn btn-info" href="{{ route('admin.lessons.edit', $lesson->id) }}">Edit Lesson</a>
             </div>
         </div>
     </div>

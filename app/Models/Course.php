@@ -22,6 +22,10 @@ class Course extends Model
     {
         return $this->hasOne(Category::class, 'id', 'category_id');
     }
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'course_id', 'id');
+    }
 
     public function users()
     {

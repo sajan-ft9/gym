@@ -23,9 +23,9 @@ class User extends Authenticatable
         'password',
         'image_path',
         'role',
-        'country',
+        'district',
         'address',
-        'dob',
+        'age',
         'gender',
         'education'
     ];

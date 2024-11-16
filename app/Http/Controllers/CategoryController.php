@@ -45,7 +45,7 @@ class CategoryController extends Controller
         ]);
 
         Category::create($formFields);
-        return redirect(route('category.index'))->with('success', 'Category created successfully');
+        return redirect(route('admin.category.index'))->with('success', 'Category created successfully');
     }
 
     /**
@@ -85,7 +85,7 @@ class CategoryController extends Controller
             'parent_id' => 'nullable|exists:categories,id'
         ]);
         $category->update($formFields);
-        return redirect(route('category.index'))->with('success', 'Category updated successfully');
+        return redirect(route('admin.category.index'))->with('success', 'Category updated successfully');
     }
 
     /**

@@ -15,7 +15,7 @@
             <div class="card-header">
                 <h3 class="card-title">Category</h3>
                 <div class="card-tools">
-                    <a class="btn-info btn-sm mx-2" href="{{ route('category.create') }}"><i
+                    <a class="btn-info btn-sm mx-2" href="{{ route('admin.category.create') }}"><i
                             class="fas fa-plus mr-1"></i>Create</a>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -40,9 +40,9 @@
                                 <td>{{ $item->parent->name ?? '-' }}</td>
                                 <td class="py-0 align-middle">
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('category.edit', $item->id) }}" class="btn btn-warning mx-1"><i
+                                        <a href="{{ route('admin.category.edit', $item->id) }}" class="btn btn-warning mx-1"><i
                                                 class="fas fa-edit"></i></a>
-                                        <form action="{{ route('category.destroy', $item->id) }}" method="POST">
+                                        <form action="{{ route('admin.category.destroy', $item->id) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button type="submit"

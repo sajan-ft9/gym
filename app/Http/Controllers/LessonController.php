@@ -57,7 +57,7 @@ class LessonController extends Controller
             'course_id' => $request->course_id,
         ]);
 
-        return redirect()->route('courses.show', $request->course_id)->with('success', 'Lesson created successfully.');
+        return redirect()->route('admin.courses.show', $request->course_id)->with('success', 'Lesson created successfully.');
     }
 
     /**
@@ -115,7 +115,7 @@ class LessonController extends Controller
             'course_id' => $request->course_id,
         ]);
 
-        return redirect()->route('courses.show', $request->course_id)->with('success', 'Lesson updated successfully.');
+        return redirect()->route('admin.courses.show', $request->course_id)->with('success', 'Lesson updated successfully.');
     }
 
     /**
@@ -132,6 +132,6 @@ class LessonController extends Controller
             Storage::delete('public/' . $lesson->video_url);
         }
 
-        return redirect()->route('courses.show', $lesson->course_id)->with('success', 'Lesson deleted successfully.');
+        return redirect()->route('admin.courses.show', $lesson->course_id)->with('success', 'Lesson deleted successfully.');
     }
 }

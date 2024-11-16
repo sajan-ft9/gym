@@ -14,7 +14,7 @@
         <div class="card card-dark">
             <div class="card-header">
                 <h3 class="card-title">Add Category</h3>
-                <a class="btn-info btn-sm mx-2" href="{{ route('category.index') }}">List</a>
+                <a class="btn-info btn-sm mx-2" href="{{ route('admin.category.index') }}">List</a>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -23,7 +23,7 @@
             </div>
 
             <div class="card-body">
-                <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
